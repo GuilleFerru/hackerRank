@@ -33,47 +33,18 @@
 
 function rotateLeft(d, arr) {
 
-    const rotatedArr = new Array(arr.length).fill(0)
+    let aux = 0;
     let count = 0;
 
-
-
-
-    // const rotatedArr = arr.map((value, index) => {
-    //     console.log(index)
-        
-    //     if (index === 0){
-    //         return value
-    //     } 
-
-    //     arr[index + 1]
-    //     // if (index === 0) {
-    //     //     return value[arr.length -1]
-    //     // } else {
-    //     //     return arr[index + 1]
-    //     // }
-
-    // });
-
-
-
+    while (count < d) {
         for (let i = 0; i < arr.length - 1; i++) {
-
-            if (i === 0) {
-                const last = arr.length - 1;
-                rotatedArr[last] = arr[i]
-                rotatedArr[i] = arr[i + 1]
-            } else {
-                rotatedArr[i] = arr[i + 1]
-            }
+            aux = arr[i];
+            arr[i] = arr[i + 1]
+            arr[i + 1] = aux
         }
-    
-       
-
-
-    return rotatedArr
-    // Write your code here
-
+        count++
+    }
+    return arr
 }
 
 function main() {
