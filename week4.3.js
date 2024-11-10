@@ -35,12 +35,15 @@
 
 function kangaroo(x1, v1, x2, v2) {
     // Write your code here
-    if(v1 === v2 && x1 != x2 || v1 >= v2 && x1 >= x2 || v1 <= v2 && x1 <= x2 ){
-        return 'NO'
-    }else{
-        return 'YES'
+
+    if (v1 - v2 === 0) {
+        return 'NO';
+    } else {
+        const t = (x2 - x1) / (v1 - v2);
+        console.log(t)
+        return Number.isInteger(t) && t >= 0 ? 'YES' : 'NO';
     }
-    
+
 
 }
 
@@ -56,9 +59,9 @@ function main() {
     // const x2 = 1
 
     // const v2 = 2
-    const result = kangaroo(1817, 9931, 8417, 190)
+    //const result = kangaroo(1817, 9931, 8417, 190)
     //const result = kangaroo(2, 1, 1, 2);
-    //const result = kangaroo(0, 3, 4, 2);
+    const result = kangaroo(0, 2, 5, 3);
     console.log(result)
 
     // ws.write(result + '\n');
