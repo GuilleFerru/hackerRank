@@ -29,43 +29,43 @@
  * The function accepts INTEGER_ARRAY arr as parameter.
  */
 
+//bubble sort
+//const sortedArr = arr;
+
+// for (let i = 0; i < sortedArr.length; i++) {
+//     for (let j = 0; j < (sortedArr.length - i - 1); j++) {
+//         if (sortedArr[j] > sortedArr[j + 1]) {
+//             let temp = sortedArr[j];
+//             sortedArr[j] = sortedArr[j + 1];
+//             sortedArr[j + 1] = temp
+//         }
+//     }
+// }
+
 function closestNumbers(arr) {
     // Write your code here
-    //bubble sort
-    //const sorteArr = arr.sort((a, b) => a - b);
-    let sortedArr = arr;
-    let diff = 0;
+    const sortedArr = arr.sort((a, b) => a - b);
     const restArr = []
     for (let i = 0; i < sortedArr.length; i++) {
-        for (let j = 0; j < (sortedArr.length - i - 1); j++) {
-            if (sortedArr[j] > sortedArr[j + 1]) {
-                let temp = sortedArr[j];
-                sortedArr[j] = sortedArr[j + 1];
-                sortedArr[j + 1] = temp
+        const val1 = sortedArr[i];
+        const val2 = sortedArr[i + 1];
+        const outerSub = Math.abs(val1 - val2);
+        if (i === 0) restArr.push(val1, val2)
+        else {
+            for (let j = 0; j < restArr.length; j += 2) {
+                const innerSub = Math.abs(restArr[j] - restArr[j + 1]);
+                if (outerSub < innerSub) {
+                    restArr.length = 0;
+                    restArr.push(val1, val2)
+                } else if (outerSub === innerSub) {
+                    restArr.push(val1, val2)
+                    break
+                }
             }
         }
     }
 
-    for (let i = 0; i < sortedArr.length; i++) {
-        for (let j = 1; j < (sortedArr.length); j++) {
-            diff = sortedArr[i] - sortedArr[j];
-            const restObject = {
-                'dif': diff,
-                'val1': sortedArr[i],
-                'val2': sortedArr[j]
-            }
-            restArr.push(restObject)
-
-        
-        }
-    }
-
-
-    const minDiff = Math.min(...restArr.map(obj => obj.val1));
-
-
-
-    return minDiff
+    return restArr
 
 }
 
