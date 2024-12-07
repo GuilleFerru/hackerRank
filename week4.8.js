@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 // const fs = require('fs');
 
 // process.stdin.resume();
@@ -21,6 +22,29 @@
 // function readLine() {
 //     return inputString[currentLine++];
 // }
+=======
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function (inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function () {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162
 
 /*
  * Complete the 'caesarCipher' function below.
@@ -33,6 +57,7 @@
 
 function caesarCipher(s, k) {
     // Write your code here
+<<<<<<< HEAD
     let newK = k;
     if(k > 26){
         const factor = Math.floor(k/26)
@@ -40,6 +65,14 @@ function caesarCipher(s, k) {
     }
 
     //console.log(k%26)
+=======
+    let newK = k; // k%26
+    if (k > 26) {
+        const factor = Math.floor(k / 26)
+        newK = k - (26 * factor);
+    }
+
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162
     const originalAlphabet = 'abcdefghijklmnopqrstuvwxyz';
     const rotatedAlphabet = originalAlphabet.slice(newK) + originalAlphabet.slice(0, newK);
     let caesarCipher = "";
@@ -62,6 +95,7 @@ function caesarCipher(s, k) {
 }
 
 function main() {
+<<<<<<< HEAD
     // const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
     // const n = parseInt(readLine().trim(), 10);
@@ -83,3 +117,19 @@ function main() {
     // ws.end();
 }
 main()
+=======
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const n = parseInt(readLine().trim(), 10);
+
+    const s = readLine();
+
+    const k = parseInt(readLine().trim(), 10);
+
+    const result = caesarCipher(s, k);
+
+    ws.write(result + '\n');
+
+    ws.end();
+}
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162

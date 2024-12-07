@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 // const fs = require('fs');
 
 // process.stdin.resume();
@@ -21,6 +22,29 @@
 // function readLine() {
 //     return inputString[currentLine++];
 // }
+=======
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function(inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function() {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162
 
 /*
  * Complete the 'minimumAbsoluteDifference' function below.
@@ -31,7 +55,10 @@
 
 function minimumAbsoluteDifference(arr) {
     // Write your code here
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162
     let mindiff = Infinity;
 
     for (let i = 0; i < arr.length; i++) {
@@ -47,6 +74,7 @@ function minimumAbsoluteDifference(arr) {
 }
 
 function main() {
+<<<<<<< HEAD
     // const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
     // const n = parseInt(readLine().trim(), 10);
@@ -64,3 +92,17 @@ function main() {
 
 }
 main()
+=======
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const n = parseInt(readLine().trim(), 10);
+
+    const arr = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
+
+    const result = minimumAbsoluteDifference(arr);
+
+    ws.write(result + '\n');
+
+    ws.end();
+}
+>>>>>>> 7f0a0e37896280f69304d90fdc726e76e6aa9162
