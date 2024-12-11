@@ -32,10 +32,11 @@
 function misereNim(s) {
     // Write your code here
     let nimSum = s.reduce((acc, current) => acc ^ current)
-
+    console.log(s,s.some(x => x !== 1))
     let player = 1;
     do {
         if (nimSum === 0) {
+            
             return player === 1 ? 'Second' : 'First'
         } else {
             const sToNimSum = [];
@@ -43,8 +44,8 @@ function misereNim(s) {
                 sToNimSum.push(s[i] ^ nimSum);
             }
             s[sToNimSum.indexOf(Math.min(...sToNimSum))] = Math.min(...sToNimSum);
-            nimSum = s.reduce((acc, current) => acc ^ current)
             player === 1 ? player = 2 : player = 1;
+            nimSum = s.reduce((acc, current) => acc ^ current)
         }
     } while (nimSum < 100)
 }
@@ -55,13 +56,13 @@ function main() {
     //    const t = parseInt(readLine().trim(), 10);
 
     const t = 1;
-    for (let tItr = 0; tItr < t; tItr++) {
+    //for (let tItr = 0; tItr < t; tItr++) {
         //const n = parseInt(readLine().trim(), 10);
 
         //const n = parseInt(readLine().trim(), 10);
 
-        //const s = new Array(16).fill(1)
-        const s = [3, 4, 5]
+        const s = new Array(3).fill(1)
+        //const s = [3, 4, 5]
         //const s = [2, 1, 3]
         //console.log(s)
         //const s = [8, 5, 10, 10, 10, 3, 9, 2, 5, 2, 5, 3, 8]
@@ -72,7 +73,7 @@ function main() {
         console.log(result)
 
         //ws.write(result + '\n');
-    }
+    //}
 
     //ws.end();
 }
