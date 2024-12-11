@@ -31,22 +31,28 @@
 
 function misereNim(s) {
     // Write your code here
-    let nimSum = s.reduce((acc, current) => acc ^ current)
-
     let player = 1;
-    do {
-        if (nimSum === 0) {
-            return player === 1 ? 'Second' : 'First'
-        } else {
-            const sToNimSum = [];
-            for (let i = 0; i < s.length; i++) {
-                sToNimSum.push(s[i] ^ nimSum);
+    let nimSum = s.reduce((acc, current) => acc ^ current)
+    const allOnes = s.every(pile => pile === 1)
+    if (allOnes) {
+        return s.length % 2 !== 0 ? 'Second' : 'First'
+    }
+
+    while (nimSum !== 0) {
+        let minVal = Infinity
+        let index = -1
+        for (let i = 0; i < s.length; i++) {
+            const newVal = s[i] ^ nimSum
+            if (newVal < minVal) {
+                minVal = newVal
+                index = i
             }
-            s[sToNimSum.indexOf(Math.min(...sToNimSum))] = Math.min(...sToNimSum);
-            nimSum = s.reduce((acc, current) => acc ^ current)
-            player === 1 ? player = 2 : player = 1;
         }
-    } while (nimSum < 100)
+        s[index] = minVal
+        nimSum = s.reduce((acc, current) => acc ^ current)
+        player = 3 - player
+    }
+    return player === 1 ? 'Second' : 'First'
 }
 
 function main() {
@@ -60,7 +66,7 @@ function main() {
 
         //const n = parseInt(readLine().trim(), 10);
 
-        //const s = new Array(16).fill(1)
+        //const s = new Array(17).fill(1)
         const s = [3, 4, 5]
         //const s = [2, 1, 3]
         //console.log(s)
