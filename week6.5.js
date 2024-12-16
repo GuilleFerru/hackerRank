@@ -31,7 +31,24 @@
 
 function formingMagicSquare(s) {
     // Write your code here
-    console.log(s)
+    const n = s.length;
+    const magicNumber = (n * ((n * n) + 1)) / 2
+
+
+    //const red = s.reduce((acc, curr) => Number(acc)+Number(curr))
+    const y = s[1][1]
+
+
+
+    for (let i = 0; i < s.length; i++) {
+        for (let j = 0; j < s[i].length; j++) {
+            if (s[0][1] !== (y - 1)){
+                
+            }
+        }
+    }
+
+    return 'red'
 
 }
 
